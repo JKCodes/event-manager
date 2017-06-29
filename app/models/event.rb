@@ -10,19 +10,41 @@ class Event < ApplicationRecord
   validates :end_time, presence: true
   validate :valid_time?
 
+  # class scope methods
+  def self.by_user(user_id)
+    where(user: user_id)
+  end
+
+  def self.starts_today
+    self.starts_now_til_days(0)
+  end
+
+  def self.starts_now_til_days(days)
+    where("start_time >= ? AND start_time <= ?", DateTime.now.beginning_of_day, (DateTime.now + days).end_of_day)
+  end
+
+  def self.upcoming_events
+    where("start_time >= ?", DateTime.now)
+  end
+
+  def self.happening_now
+    where("start_time <= ? AND end_time >= ?", DateTime.now, DateTime.now)
+  end
+
+  # validation code below
   def valid_time?
     return if !self.user || !self.location || !self.start_time || !self.end_time
 
     errors.add(:start_time, "can't be between another event's start and end time at the same location") if intersects_another_event?(self.start_time)
     errors.add(:end_time, "can't be between another event's start and end time at the same location") if intersects_another_event?(self.end_time)
     errors.add(:end_time, "can't be before the start time") if end_time < start_time
-    errors.add(:start_time, "can't be before current time") if start_time < DateTime.now
+    errors.add(:start_time, "can't be before today") if start_time < Time.zone.today.beginning_of_day.to_datetime
   end
 
   private
     def intersects_another_event?(time)
       self.user.events.any? do |event|
-        if self.location == event.location
+        if self.location == event.location && event != self
           if event.start_time < time && time < event.end_time
             true
           end
