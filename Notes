@@ -13,10 +13,10 @@ Models
   = has_many :locations
 - events (join table - users->locations->events)
   + name
-  + start_datetime
-    * must exist and be datetime
-  + duration
-    * must exist and be a number
+  + start_time
+    * must exist
+  + end_time
+    * must exist
   = belongs_to :user
   = belongs_to :location
   = has_many :participant, through: :event_participants

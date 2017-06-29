@@ -15,6 +15,8 @@ class Event < ApplicationRecord
 
     errors.add(:start_time, "can't be between another event's start and end time at the same location") if intersects_another_event?(self.start_time)
     errors.add(:end_time, "can't be between another event's start and end time at the same location") if intersects_another_event?(self.end_time)
+    errors.add(:end_time, "can't be before the start time") if end_time < start_time
+    errors.add(:start_time, "can't be before current time") if start_time < DateTime.now
   end
 
   private
