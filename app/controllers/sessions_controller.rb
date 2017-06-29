@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   before_action :create_user, only: [:signin, :signup]
+  before_action :redirect_if_signed_in, except: [:signout]
 
   def signin_post
     user = User.find_by(username: params[:user][:username])
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def signout
     session.delete :user_id
     redirect_to root_path
   end
