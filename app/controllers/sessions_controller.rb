@@ -18,7 +18,13 @@ class SessionsController < ApplicationController
   end
 
   def signup_post
-
+    @user = User.new(session_params)
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to root_path, notice: "Welcome to Event Manager!"
+    else
+      render :signup
+    end
   end
 
   def destroy
@@ -28,6 +34,6 @@ class SessionsController < ApplicationController
 
   private
     def session_params
-      params.require(:user).permit(:username, :password, :password_confirmation)
+      params.require(:user).permit(:username, :email, :password, :password_confirmation)
     end
 end
