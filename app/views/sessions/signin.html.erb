@@ -1,5 +1,22 @@
 <h1>Sign In to Event Manager</h1>
 
-<%= form_for @user, url: signin_post_path do |f| %>
+<%= render "layouts/form_errors", object: @user %>
 
+<%= form_for @user, url: signin_post_path do |f| %>
+  <fieldset>
+    <legend>Sign In</legend>
+    <div>
+      <%= f.label :username, "Enter your username"%><br>
+      <%= f.text_field :username %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :password, "Enter your password"%><br>
+      <%= f.password_field :password %>
+    </div>
+    <br>
+    <div>
+      <%= f.submit "Sign In" %>
+    </div>
+  </fieldset>
 <% end %>
