@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    # returns a dummy user until session controller is defined
-    User.new
+    User.find_by(id: session[:user_id])
   end
 end
