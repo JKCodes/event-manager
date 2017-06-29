@@ -10,4 +10,6 @@ Rails.application.routes.draw do
   get '/signup' => 'sessions#signup'
   post '/signup' => 'sessions#signup_post', as: "signup_post"
   delete "/signout" => 'sessions#signout'
+
+  get '/auth/facebook/callback' => 'sessions#facebook'
 end
