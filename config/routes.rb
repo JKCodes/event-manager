@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   root 'welcome#home'
 
-  get '/signin' => "sessions#new"
-  post '/sessions/create' => 'sessions#create'
+  get '/signin' => "sessions#signin"
+  post '/signin' => 'sessions#signin_post'
+  get '/signup' => 'sessions#signup'
+  post '/signup' => 'sessions#signup_post'
   delete "/signout" => 'sessions#destroy'
 end
