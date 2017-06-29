@@ -1,7 +1,5 @@
 class SessionsController < ApplicationController
-  def signin
-    @user = User.new
-  end
+  before_action :create_user, only: [:signin, :signup]
 
   def signin_post
     user = User.find_by(username: params[:user][:username])
@@ -17,10 +15,6 @@ class SessionsController < ApplicationController
   
       render :signin
     end
-  end
-
-  def signup
-    @user = User.new
   end
 
   def signup_post
@@ -42,5 +36,9 @@ class SessionsController < ApplicationController
   private
     def session_params
       params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    end
+
+    def create_user
+      @user = User.new
     end
 end
