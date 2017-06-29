@@ -1,0 +1,15 @@
+<nav>
+  <ul>
+    <li><%= link_to "Home", root_path %></li>
+
+    <% if signed_in? %>
+     <li><%= link_to "Events", root_path %></li>
+     <li><%= link_to "Participants", root_path %></li>
+     <li><%= link_to "Locations", root_path %></li>
+     <li><%= link_to "Sign Out", root_path %></li>
+    <% else %>
+     <li><%= link_to "Sign Up", root_path %></li>
+     <li><%= link_to "Sign In", root_path %></li>
+    <% end %>
+  </ul>
+</nav>
