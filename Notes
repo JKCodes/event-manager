@@ -84,6 +84,7 @@ Features
     * Name, Street Address, City, State, and Zipcode fields
   + Show
     * List the events associated with this location
+      ^ Can also create a new event from this location here
     * Other details for the location
   + Destroy
     * Can destroy from both index and show page
