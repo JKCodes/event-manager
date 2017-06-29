@@ -33,9 +33,8 @@ Models
   = has_many :participants, through: :events
 - participants (users can create participants)
   + nickname
-    * must exist/be unique
-  + first_name
     * must exist
+  + first_name
   + last_name
   + email
   + phone_number
