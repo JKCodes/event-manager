@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_if_signed_in
-    redirect_to root_path, notice: "You are already signed in!" if signed_in?
+    redirect_to events_path, notice: "You are already signed in!" if signed_in?
   end
 
   def redirect_if_not_signed_in

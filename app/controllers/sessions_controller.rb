@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     user = User.find_by(username: params[:user][:username])
     if user && user.authenticate(params[:user][:password])
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Welcome back to Event Manager!"
+      redirect_to events_path, notice: "Welcome back to Event Manager!"
     else
       @user = User.new(session_params)
       @user.valid?
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
     user = User.new(session_params)
     if user.save
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Welcome to Event Manager!"
+      redirect_to events_path, notice: "Welcome to Event Manager!"
     else
       @user = user
       render :signup
@@ -38,7 +38,7 @@ class SessionsController < ApplicationController
     user = User.find_or_create_by_omniauth(auth)
     session[:user_id] = user.id
 
-    redirect_to root_path
+    redirect_to events_path
   end
 
   private
