@@ -1,8 +1,19 @@
 Rails.application.routes.draw do
+  resources :events
+
+  resources :locations do
+    resources :events
+  end
+
+  resources :participants do
+    resources :events
+  end
+
+  resources :locations do
+    resources :events, only: :index
+  end
+
   get 'welcome/home'
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
   root 'welcome#home'
 
   get '/signin' => "sessions#signin"
