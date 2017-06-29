@@ -23,7 +23,7 @@ Models
   = has_many :event_participants
 - locations (where do the events happen)
   + name
-    * must be unique/exist
+    * must be exist
   + street_address
   + city
   + state
