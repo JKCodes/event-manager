@@ -7,18 +7,20 @@ Models
   + email
     * must be unique/exist
   + password-digest (bcrypt)
-    * must exist
+    * must exist/be at least 8 characters
   = has_many :participants
   = has_many :events
   = has_many :locations
-- events (join table)
-  + event_date_time
+- events (join table - users->locations->events)
+  + name
+  + start_datetime
     * must exist and be datetime
   + duration
     * must exist and be a number
   = belongs_to :user
   = belongs_to :location
-  = belongs_to :client
+  = has_many :participant, through: :event_participants
+  = has_many :event_participants
 - locations (where do the events happen)
   + name
     * must be unique/exist
@@ -27,7 +29,7 @@ Models
   + state
   + zipcode
   = belongs_to :user
-  = has_many :events, dependent: :destroy
+  = has_many :events
   = has_many :participants, through: :events
 - participants (users can create participants)
   + nickname
@@ -38,5 +40,64 @@ Models
   + email
   + phone_number
   = belongs_to :user
-  = has_many :events, dependent: :destroy
+  = has_many :events, through: :event_participants
+  = has_many :event_participants
   = has_many :locations, through: :events
+- event_participants (join table for events and participants)
+  belongs_to :event
+  belongs_to :participant
+
+Features
+- login/signup/welcome page
+  + allow login with Facebook and Github as well
+- Root = welcome page
+- Main redirect page after login = events index page
+
+- Users
+  + Users are not the same as participants
+  + Once created, users cannot be read, updated, or deleted (for now - may change in future)
+  + Used for login/signin/signout
+
+- Events
+  + Index 
+    * lists all events sorted by event starttime
+    * link to new event
+    * each event can be clicked to be edited/deleted from this page
+  + New/Edit/Create/Update
+    * Select or create new participant and location
+    * Select Start time and duration
+  + Show
+    * List the location associated with this event
+    * List all participants for this event
+    * List duration and start time of this event
+  + Destroy
+    * Can destroy from both index and show page
+
+- Locations
+  + Index
+    * lists all locations (either unordered list or table)
+      ^ Links to all events for this locations (i.e. '7 events' will be a link)
+    * Link to new location
+    * Edit/Delete location
+    * Link to new event for a specific location - this will have the location_id filled in for the event
+  + New/Edit/Create/Update
+    * Name, Street Address, City, State, and Zipcode fields
+  + Show
+    * List the events associated with this location
+    * Other details for the location
+  + Destroy
+    * Can destroy from both index and show page
+
+- Participants
+  + Index
+    * lists all participants (either ul or table)
+    * Link to new participant
+    * link to eidt/delete participant
+    * link to all events associated with the given participant
+  + New/Edit/Create/Update
+    * Nickname, first_name, last_name, email, phone_number fields
+  + Show
+    * List the events associated with this participant
+    * other details for this participant
+  + Destroy
+    * Can destroy from both index and show page
