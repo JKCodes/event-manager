@@ -17,6 +17,14 @@ class LocationsController < ApplicationController
     end
   end
 
+  def update
+    if @location.update(location_params)
+      redirect_to location_path(@location), notice: "Location was updated successfully"
+    else
+      render :edit
+    end
+  end
+
   private
     def create_location
       @location = current_user.locations.build
