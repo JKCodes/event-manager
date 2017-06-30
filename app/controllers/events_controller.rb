@@ -11,8 +11,12 @@ class EventsController < ApplicationController
   def create
     params = events_param
     params[:user_id] = session[:user_id]
-    event = Event.new(params)
-    raise event.inspect
+    @event = Event.new(params)
+    if @event.save
+      redirect_to events_path
+    else
+      render :new
+    end
   end
 
   def new

@@ -1,3 +1,5 @@
+<%= render "layouts/form_errors", object: event %>
+
 <%= form_for event do |f| %>
   <fieldset>
     <h3>Event Details</h3>
@@ -32,6 +34,7 @@
     <% end %>
 
     <h3>Participants for this event</h3>
+    <p>You may also choose to add participants later</p>
     <% if current_user.participants.any? %>
       <div>
         <%= f.label :location, "Choose (an) existing participant(s): " %>
@@ -40,9 +43,9 @@
       </div>
     <% end %>
 
-    <p>Create up to 10 new participants</p>
+    <p>Create up to 25 new participants</p>
     <ol>
-    <% 10.times do %>
+    <% 25.times do %>
       <%= f.fields_for :participants, event.participants.build do |participant| %>
         <li>
         <%= participant.label :nickname, "Nickname: " %>

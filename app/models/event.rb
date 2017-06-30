@@ -15,8 +15,6 @@ class Event < ApplicationRecord
   end
 
   def participants_attributes=(attributes)
-    self.participants.clear
-
     attributes.values.each do |attributes|
       self.participants << Participant.by_user(self.user).find_or_create_by(nickname: attributes[:nickname]) if attributes[:nickname] != ""
     end
