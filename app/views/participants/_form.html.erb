@@ -1,0 +1,40 @@
+<%= render "layouts/form_errors", object: participant %>
+
+<%= form_for participant do |f| %>
+  <fieldset>
+    <h3>Participant Details</h3>
+    <div>
+      <%= f.label :nickname, "Nickname"%><br>
+      <%= f.text_field :nickname %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :first_name, "First Name"%><br>
+      <%= f.text_field :first_name %>
+    </div>
+    <br>
+  
+    <div>
+      <%= f.label :last_name, "Last Name"%><br>
+      <%= f.text_field :last_name %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :email, "Email"%><br>
+      <%= f.email_field :email %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :phone_number, "Phone Number"%><br>
+      <%= f.telephone_field :phone_number %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
