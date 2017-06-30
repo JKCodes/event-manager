@@ -1,4 +1,4 @@
-<h1>Event Details -
+<h1><%= "#{@location.name}'s" if @location %> Event Details -
   <%= link_to "edit", edit_event_path(@event) %> |
   <%= link_to "delete", event_path(@event), method: :delete, data: { confirm: "Are you sure?"} %>
 </h1>
@@ -9,9 +9,11 @@
 <h3>End Time: <%= formatted_time(@event.end_time) %></h3>
 <br>
 
-<h1>Location</h1>
-<h3>Name: <%= link_to @event.location.name, location_path(@event.location) %></h3>
-<br>
+<% if !@location %>
+  <h1>Location</h1>
+  <h3>Name: <%= link_to @event.location.name, location_path(@event.location) %></h3>
+  <br>
+<% end %>
 
 <h1>Participants</h1>
 <ol>

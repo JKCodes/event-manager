@@ -1,20 +1,25 @@
 <h1>Events List</h1>
-<p><%= link_to "Add a new event", new_event_path %></p>
+
+<% if !@location %>
+  <p><%= link_to "Add a new event", new_event_path %></p>
+<% else %>
+  <p><%= link_to "Create a new event for this location", new_location_event_path %>
+<% end %>
 
 <% if !@todays_events.empty? %>
   <h2>Today's Events</h2>
 
-  <%= render "events", events: @todays_events %>
+  <%= render "events", { events: @todays_events, location: @location } %>
 <% end %>  
 
 <% if !@upcoming_events.empty? %>
   <h2>Upcoming Events</h2>
 
-  <%= render "events", events: @upcoming_events %>
+  <%= render "events", { events: @upcoming_events, location: @location } %>
 <% end %>
 
 <% if !@old_events.empty? %>
   <h2>Past Events</h2>
 
-  <%= render "events", events: @old_events %>
+  <%= render "events", { events: @old_events, location: @location } %>
 <% end %>

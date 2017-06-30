@@ -2,6 +2,7 @@ class EventsController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :create_event, only: [:new]
+  before_action :set_location, only: [:index, :show, :new, :create]
 
   def index
     if params[:location_id]
@@ -31,7 +32,10 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event.build_location
+    @event = Event.new(location_id: params[:location_id]) if @location
+  end
+
+  def show
   end
 
   def update
@@ -48,6 +52,9 @@ class EventsController < ApplicationController
   end
 
   private
+    def set_location
+      @location = Location.by_user(current_user).find(params[:location_id]) if params[:location_id]
+    end
 
     def set_event
       @event = Event.by_user(current_user).find(params[:id])
