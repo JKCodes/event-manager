@@ -1,0 +1,19 @@
+<h1>Location Details -
+  <%= link_to "edit", edit_location_path(@location) %> |
+  <%= link_to "delete", location_path(@location), method: :delete, data: { confirm: "Are you sure?"} %>
+</h1>
+
+
+<h3>Name: <%= @location.name %></h3>
+<h3>Street Address: <%= @location.street_address %></h3>
+<h3>City: <%= @location.city %></h3>
+<h3>State: <%= @location.state %></h3>
+<h3>Zipcode: <%= @location.zipcode %></h3>
+<br>
+
+<h1>Events</h1>
+<ol>
+  <% @location.events.each do |event| %>
+    <li><%= link_to event_to_s(event), event_path(event) %></li>
+  <% end %>  
+</ol>
