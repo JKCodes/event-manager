@@ -12,3 +12,9 @@
 
   <%= render "events", events: @upcoming_events %>
 <% end %>
+
+<% if !@old_events.empty? %>
+  <h2>Past Events</h2>
+
+  <%= render "events", events: @old_events %>
+<% end %>

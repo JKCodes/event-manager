@@ -1,6 +1,6 @@
 module EventsHelper
   def formatted_time(time)
-    time.strftime("%B %e, %Y - %l:%M %p")
+    time.strftime("%B %e, %Y - %l:%M %p (%Z)")
   end
 
   def event_to_s(event)

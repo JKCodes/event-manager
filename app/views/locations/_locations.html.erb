@@ -14,7 +14,7 @@
       <td><%= location.city %></td>
       <td><%= location.state %></td>
       <td><%= location.zipcode %></td>
-      <td><%= location.events.count %>
+      <td><%= link_to location.events.count, location_events_path(location) %>
     </tr>
   <% end %>
 </table>

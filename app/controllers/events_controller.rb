@@ -4,8 +4,19 @@ class EventsController < ApplicationController
   before_action :create_event, only: [:new]
 
   def index
-    @todays_events = Event.by_user(current_user).starts_today
-    @upcoming_events = Event.by_user(current_user).upcoming_events
+    if params[:location_id]
+      @todays_events = Location.by_user(current_user).find(params[:location_id]).events.starts_today
+      @upcoming_events = Location.by_user(current_user).find(params[:location_id]).events.upcoming_events
+      @old_events = Location.by_user(current_user).find(params[:location_id]).events.old_events
+    elsif params[:participant_id]
+      @todays_events = Participant.by_user(current_user).find(params[:participant_id]).events.starts_today
+      @upcoming_events = Participant.by_user(current_user).find(params[:participant_id]).events.upcoming_events
+      @old_events = Participant.by_user(current_user).find(params[:participant_id]).events.old_events
+    else
+      @todays_events = Event.by_user(current_user).starts_today
+      @upcoming_events = Event.by_user(current_user).upcoming_events
+      @old_events = Event.by_user(current_user).old_events
+    end
   end
 
   def create
