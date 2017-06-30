@@ -1,1 +1,6 @@
-<h1>Participants Index page</h1>
+<h1>Participants List</h1>
+<p><%= link_to "Add a new participant", new_participant_path %></p>
+
+<% if !@participants.empty? %>
+  <%= render "participants", participants: @participants %>
+<% end %>  
