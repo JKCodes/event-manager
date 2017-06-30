@@ -25,6 +25,11 @@ class LocationsController < ApplicationController
     end
   end
 
+  def destroy
+    @location.destroy
+    redirect_to locations_path, notice: "Location and all its associated events are deleted successfully"
+  end
+
   private
     def create_location
       @location = current_user.locations.build

@@ -1,6 +1,6 @@
 <h1>Location Details -
   <%= link_to "edit", edit_location_path(@location) %> |
-  <%= link_to "delete", location_path(@location), method: :delete, data: { confirm: "Are you sure?"} %>
+  <%= link_to "delete", location_path(@location), method: :delete, data: { confirm: "Are you sure?  WARNING: This will also destroy all events that are associated with this location."} %>
 </h1>
 
 
