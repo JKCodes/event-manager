@@ -10,6 +10,10 @@ class Event < ApplicationRecord
   validates :end_time, presence: true
   validate :valid_time?
 
+  def location_attributes=(attibutes)
+    
+  end
+
   # class scope methods
   def self.by_user(user_id)
     where(user: user_id)

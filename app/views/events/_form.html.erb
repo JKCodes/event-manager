@@ -1,0 +1,39 @@
+<%= form_for event do |f| %>
+  <fieldset>
+    <h3>Event Details</h3>
+    <div>
+      <%= f.label :name, "Name"%><br>
+      <%= f.text_field :name %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :start_time, "Start Time"%><br>
+      <%= f.datetime_select :start_time, ampm: true %>
+    </div>
+    <br>
+    <div>
+      <%= f.label :end_time, "End Time"%><br>
+      <%= f.datetime_select :end_time, ampm: true %>
+    </div>
+    <br>
+
+    <h3>Location for this event</h3>
+    <% if current_user.locations.any? %>
+      <div>
+        <%= f.label :location, "Choose an existing location: " %>
+        <%= f.collection_select :location_id, current_user.locations, :id, :name %>
+        <p>OR</p>
+      </div>
+    <% end %>
+
+    <%= f.fields_for :location, event.build_location do |location| %>
+      <%= location.label :name, "Create a new location by entering a new name: " %>
+      <%= location.text_field :name %>
+    <% end %>
+
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
