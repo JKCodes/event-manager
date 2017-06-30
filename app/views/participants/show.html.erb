@@ -1,0 +1,19 @@
+<h1>Participant Details -
+  <%= link_to "edit", edit_participant_path(@participant) %> |
+  <%= link_to "delete", participant_path(@participant), method: :delete, data: { confirm: "Are you sure?"} %>
+</h1>
+
+
+<h3>Nickname: <%= @participant.nickname %></h3>
+<h3>First Name: <%= @participant.first_name %></h3>
+<h3>Last Name: <%= @participant.last_name %></h3>
+<h3>Email: <%= @participant.email %></h3>
+<h3>Phone Number: <%= @participant.phone_number %></h3>
+<br>
+
+<h1>Events</h1>
+<ol>
+  <% @participant.events.each do |event| %>
+    <li><%= link_to event_to_s(event), event_path(event) %></li>
+  <% end %>  
+</ol>
