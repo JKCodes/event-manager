@@ -9,7 +9,8 @@ class EventsController < ApplicationController
   end
 
   def create
-    raise params.inspect
+    event = current_user.events.build(events_param)
+    raise event.inspect
   end
 
   def new
@@ -17,11 +18,16 @@ class EventsController < ApplicationController
   end
 
   private
+
     def set_event
       @event = Event.by_user(current_user).find(params[:id])
     end
 
     def create_event
       @event = current_user.events.build
+    end
+
+    def events_param
+      params.require(:event).permit(:name, :start_time, :end_time, :location_id, participant_ids: [], location_attributes: [:name], participants_attributes: [:nickname])
     end
 end

@@ -10,12 +10,12 @@ class Event < ApplicationRecord
   validates :end_time, presence: true
   validate :valid_time?
 
-  def location_attributes=(attibutes)
+  def location_attributes=(attributes)
 
   end
 
-  def participants_attributes=(attibutes)
-    
+  def participants_attributes=(attributes)
+
   end
 
   # class scope methods
