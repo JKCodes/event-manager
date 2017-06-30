@@ -40,11 +40,16 @@
       </div>
     <% end %>
 
-    <%= f.fields_for :participants, event.participants.build do |participant| %>
-      <%= participant.label :nickname, "Create a new participant by entering a new nickname: " %>
-      <%= participant.text_field :nickname %>
+    <p>Create up to 10 new participants</p>
+    <ol>
+    <% 10.times do %>
+      <%= f.fields_for :participants, event.participants.build do |participant| %>
+        <li>
+        <%= participant.label :nickname, "Nickname: " %>
+        <%= participant.text_field :nickname %></li>
+      <% end %>
     <% end %>
-    <br><br>
+    </ol>
     <div>
       <%= f.submit %>
     </div>

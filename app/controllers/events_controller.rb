@@ -9,7 +9,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    event = current_user.events.build(events_param)
+    params = events_param
+    params[:user_id] = session[:user_id]
+    event = Event.new(params)
     raise event.inspect
   end
 

@@ -11,11 +11,15 @@ class Event < ApplicationRecord
   validate :valid_time?
 
   def location_attributes=(attributes)
-
+    self.location = Location.by_user(self.user).find_or_create_by(name: attributes[:name]) if attributes[:name] != ""
   end
 
   def participants_attributes=(attributes)
+    self.participants.clear
 
+    attributes.values.each do |attributes|
+      self.participants << Participant.by_user(self.user).find_or_create_by(nickname: attributes[:nickname]) if attributes[:nickname] != ""
+    end
   end
 
   # class scope methods
