@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :redirect_if_not_signed_in
-  before_action :set_event, only: [:show]
+  before_action :set_event, only: [:show, :edit, :update]
   before_action :create_event, only: [:new]
 
   def index
@@ -21,6 +21,14 @@ class EventsController < ApplicationController
 
   def new
     @event.build_location
+  end
+
+  def update
+    if @event.update(events_param)
+      redirect_to event_path(@event), notice: "Event was updated successfully!"
+    else
+      render :edit
+    end
   end
 
   private
