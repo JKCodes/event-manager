@@ -1,0 +1,20 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Street Adress</th>
+    <th>City</th>
+    <th>State</th>
+    <th>Zipcode</th>
+    <th>Events</th>
+  </tr>
+  <% locations.each do |location| %>
+    <tr>
+      <td><%= link_to location.name, location_path(location) %></td>
+      <td><%= location.street_address %></td>
+      <td><%= location.city %></td>
+      <td><%= location.state %></td>
+      <td><%= location.zipcode %></td>
+      <td><%= location.events.count %>
+    </tr>
+  <% end %>
+</table>
