@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :redirect_if_not_signed_in
-  before_action :set_event, only: [:show, :edit, :update]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :create_event, only: [:new]
 
   def index
@@ -29,6 +29,11 @@ class EventsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @event.destroy
+    redirect_to events_path, notice: "Event was deleted successfully."
   end
 
   private
