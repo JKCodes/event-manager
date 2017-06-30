@@ -21,7 +21,7 @@
     <% if current_user.locations.any? %>
       <div>
         <%= f.label :location, "Choose an existing location: " %>
-        <%= f.collection_select :location_id, current_user.locations, :id, :name %>
+        <%= f.collection_select :location_id, current_user.locations, :id, :name, include_blank: true %>
         <p>OR</p>
       </div>
     <% end %>
@@ -31,7 +31,20 @@
       <%= location.text_field :name %>
     <% end %>
 
+    <h3>Participants for this event</h3>
+    <% if current_user.participants.any? %>
+      <div>
+        <%= f.label :location, "Choose (an) existing participant(s): " %>
+        <%= f.collection_check_boxes :participant_ids, current_user.participants, :id, :nickname %>
+        <p>OR</p>
+      </div>
+    <% end %>
 
+    <%= f.fields_for :participants, event.participants.build do |participant| %>
+      <%= participant.label :nickname, "Create a new participant by entering a new nickname: " %>
+      <%= participant.text_field :nickname %>
+    <% end %>
+    <br><br>
     <div>
       <%= f.submit %>
     </div>

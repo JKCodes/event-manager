@@ -11,6 +11,10 @@ class Event < ApplicationRecord
   validate :valid_time?
 
   def location_attributes=(attibutes)
+
+  end
+
+  def participants_attributes=(attibutes)
     
   end
 
