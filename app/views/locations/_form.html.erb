@@ -1,0 +1,40 @@
+<%= render "layouts/form_errors", object: location %>
+
+<%= form_for location do |f| %>
+  <fieldset>
+    <h3>Event Details</h3>
+    <div>
+      <%= f.label :name, "Name"%><br>
+      <%= f.text_field :name %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :street_address, "Street Address"%><br>
+      <%= f.text_field :street_address %>
+    </div>
+    <br>
+  
+    <div>
+      <%= f.label :city, "City"%><br>
+      <%= f.text_field :city %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :state, "State"%><br>
+      <%= f.text_field :state %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :zipcode, "Street Address"%><br>
+      <%= f.text_field :zipcode %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  </fieldset>
+<% end %>
