@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Event Name</th>
+    <th>Start Time</th>
+    <th>End Time</th>
+    <th>Participants</th>
+  </tr>
+  <% events.each do |event| %>
+    <tr>
+      <td><%= link_to event.name, event_path(event) %></td>
+      <td><%= formatted_time(event.start_time) %></td>
+      <td><%= formatted_time(event.end_time) %></td>
+      <td><%= event.participants.count %>
+    </tr>
+  <% end %>
+</table>

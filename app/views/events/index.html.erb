@@ -1,1 +1,14 @@
-<h1>Events index page</h1>
+<h1>Events List</h1>
+<p><%= link_to "Add a new event", new_event_path %></p>
+
+<% if !@todays_events.empty? %>
+  <h2>Today's Events</h2>
+
+  <%= render "events", events: @todays_events %>
+<% end %>  
+
+<% if !@upcoming_events.empty? %>
+  <h2>Upcoming Events</h2>
+
+  <%= render "events", events: @upcoming_events %>
+<% end %>
