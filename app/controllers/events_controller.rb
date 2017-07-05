@@ -21,9 +21,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    params = events_param
-    params[:user_id] = session[:user_id]
-    @event = Event.new(params)
+    create_params = events_param
+    create_params[:user_id] = session[:user_id]
+    @event = Event.new(create_params)
     if @event.save
       redirect_to events_path
     else
