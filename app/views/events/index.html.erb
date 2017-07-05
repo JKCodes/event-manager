@@ -1,9 +1,15 @@
-<h1>Events List</h1>
+<% if @location %>
+  <h1>Events list for <%= @location.name %></h1>
+<% elsif @participant %>
+  <h1>Events list for <%= participant_to_s(@participant) %></h1>
+<% else %>
+  <h1>Events list</h1>
+<% end %>
 
 <% if !@location %>
   <p><%= link_to "Add a new event", new_event_path %></p>
 <% else %>
-  <p><%= link_to "Create a new event for this location", new_location_event_path %>
+  <p><%= link_to "Create a new event for #{@location.name}", new_location_event_path %>
 <% end %>
 
 <% if !@todays_events.empty? %>

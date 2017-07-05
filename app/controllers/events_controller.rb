@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :create_event, only: [:new]
-  before_action :set_location, only: [:index, :show, :edit, :new]
+  before_action :set_location, except: [:destroy]
+  before_action :set_participant, only: [:index]
 
   def index
     if params[:location_id]
@@ -25,7 +26,7 @@ class EventsController < ApplicationController
     create_params[:user_id] = session[:user_id]
     @event = Event.new(create_params)
     if @event.save
-      redirect_to events_path
+      redirect_to @location ? location_events_path : events_path
     else
       render :new
     end
@@ -40,7 +41,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(events_param)
-      redirect_to event_path(@event), notice: "Event was updated successfully!"
+      redirect_to @location ? location_event_path(@location) : event_path(@event), notice: "Event was updated successfully!"
     else
       render :edit
     end
@@ -54,6 +55,10 @@ class EventsController < ApplicationController
   private
     def set_location
       @location = Location.by_user(current_user).find(params[:location_id]) if params[:location_id]
+    end
+
+    def set_participant
+      @participant = Participant.by_user(current_user).find(params[:participant_id]) if params[:participant_id]
     end
 
     def set_event
