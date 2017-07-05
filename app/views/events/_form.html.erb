@@ -1,5 +1,11 @@
 <%= render "layouts/form_errors", object: event %>
 
-<%= form_for event do |f| %>
-  <%= render "form_details", {f: f, location: @location, event: event } %>
+<% if @location %>
+  <%= form_for event, url: "/locations/#{@location.id}/events" do |f| %>
+    <%= render "form_details", {f: f, location: @location, event: event } %>
+  <% end %>
+<% else %>
+  <%= form_for event do |f| %>
+    <%= render "form_details", {f: f, event: event } %>
+  <% end %>
 <% end %>

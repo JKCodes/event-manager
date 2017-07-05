@@ -32,7 +32,7 @@ class EventsController < ApplicationController
   end
 
   def new
-    @event = Event.new(location_id: params[:location_id]) if @location
+    @event = Event.new(location_id: params[:location_id]) if params[:location_id]
   end
 
   def show
