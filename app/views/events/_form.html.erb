@@ -1,7 +1,7 @@
 <%= render "layouts/form_errors", object: event %>
 
 <% if @location %>
-  <%= form_for event, url: "/locations/#{@location.id}/events" do |f| %>
+  <%= form_for event, url: event.id ? "/locations/#{@location.id}/events/#{event.id}" :"/locations/#{@location.id}/events" do |f| %>
     <%= render "form_details", {f: f, location: @location, event: event } %>
   <% end %>
 <% else %>

@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :set_event, only: [:show, :edit, :update, :destroy]
   before_action :create_event, only: [:new]
-  before_action :set_location, only: [:index, :show, :new, :create]
+  before_action :set_location, only: [:index, :show, :edit, :new]
 
   def index
     if params[:location_id]

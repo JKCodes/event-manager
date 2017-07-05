@@ -1,5 +1,5 @@
 <h1><%= "#{@location.name}'s" if @location %> Event Details -
-  <%= link_to "edit", edit_event_path(@event) %> |
+  <%= link_to "edit", @location ? edit_location_event_path(@location) : edit_event_path(@event) %> |
   <%= link_to "delete", event_path(@event), method: :delete, data: { confirm: "Are you sure?"} %>
 </h1>
 
