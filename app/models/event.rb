@@ -19,6 +19,14 @@ class Event < ApplicationRecord
     end
   end
 
+  def start_time=(attribute)
+    write_attribute(:start_time, attribute.to_time.to_datetime)
+  end
+
+  def end_time=(attribute)
+    write_attribute(:end_time, attribute.to_time.to_datetime)
+  end
+
   # class scope methods
   
 
