@@ -5,9 +5,4 @@ class Participant < ApplicationRecord
   has_many :locations, through: :events
 
   validates :nickname, presence: true
-
-  def self.by_user(user_id)
-    where(user: user_id)
-  end
-
 end

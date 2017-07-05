@@ -20,9 +20,7 @@ class Event < ApplicationRecord
   end
 
   # class scope methods
-  def self.by_user(user_id)
-    where(user: user_id)
-  end
+  
 
   def self.old_events
     where("start_time < ?", DateTime.now)
