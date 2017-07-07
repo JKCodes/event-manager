@@ -17,6 +17,12 @@ class LocationsController < ApplicationController
   def show
     set_previous_location(@location)
     set_next_location(@location)
+
+    if request.xhr? != 0
+      render "show"
+    else
+      render json: @location
+    end
   end
 
   def update
