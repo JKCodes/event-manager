@@ -4,6 +4,7 @@ class ParticipantsController < ApplicationController
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
   before_action :set_event, only: [:index]
 
+
   def index
     @participants = Participant.by_user(current_user)
 
@@ -24,6 +25,17 @@ class ParticipantsController < ApplicationController
     end
   end
 
+  def show
+    set_previous_participant(@participant)
+    set_next_participant(@participant)
+    set_participant_indexes(@participant)
+    if request.xhr? != 0
+      render "show"
+    else
+      render json: @participant
+    end
+  end
+
   def update
     if @participant.update(participant_params)
       redirect_to participant_path(@participant), notice: "Participant was updated successfully"
@@ -38,6 +50,18 @@ class ParticipantsController < ApplicationController
   end
 
   private
+    def set_previous_participant(participant)
+      @previous = Participant.previous(participant)
+    end
+
+    def set_next_participant(participant)
+      @next = Participant.next(location)
+    end
+
+    def set_location_indexes(participant)
+      @indexes = Participant.indexes(participant)
+    end
+
     def create_participant
       @participant = current_user.participants.build
     end
