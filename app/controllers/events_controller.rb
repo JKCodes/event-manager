@@ -20,10 +20,11 @@ class EventsController < ApplicationController
       @old_events = Event.by_user(current_user).old_events
     end
 
-    if true
+    if request.xhr? != 0
       render "index"
     else
-      render "index_single", layout: false
+      raise "JSON!".inspect
+      render json: @todays_events
     end
   end
 

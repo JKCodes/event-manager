@@ -14,7 +14,9 @@
 
 <% if @location.events.any? %>
   <h1>Events</h1>
-  <%= link_to "Load Events", events_path, class: "load_events" if @location.events %>
+  <%= link_to "Load Events", events_path, {class: "load_events", data: {"lid": @location.id} } if @location.events %>
+  <div class="events"> 
+  </div>
 <% else %>
   <h1>No events at this location</h1>
 <% end %>
