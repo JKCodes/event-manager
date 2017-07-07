@@ -19,6 +19,12 @@ class EventsController < ApplicationController
       @upcoming_events = Event.by_user(current_user).upcoming_events
       @old_events = Event.by_user(current_user).old_events
     end
+
+    if true
+      render "index"
+    else
+      render "index_single", layout: false
+    end
   end
 
   def create
