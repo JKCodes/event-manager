@@ -33,11 +33,11 @@ class LocationsController < ApplicationController
   end
 
   private
-    def next_location(location)
+    def set_previous_location(location)
       @previous = Location.previous(location)
     end
 
-    def previous_location(location)
+    def set_next_location(location)
       @next = Location.next(location)
     end
 
