@@ -3,6 +3,10 @@
   <%= link_to "delete", location_path(@location), method: :delete, data: { confirm: "Are you sure?  WARNING: This will also destroy all events that are associated with this location."} %>
 </h1>
 
+<div>
+  <%= link_to "Previous Location", "#", class: "load_previous" %> |
+  <%= link_to "Next Location", "#", class: "load_next" %>
+</div>
 
 <h3>Name: <%= @location.name %></h3>
 <h3>Street Address: <%= @location.street_address %></h3>
