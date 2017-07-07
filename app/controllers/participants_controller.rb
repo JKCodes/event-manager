@@ -2,9 +2,16 @@ class ParticipantsController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :create_participant, only: [:new]
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:index]
 
   def index
     @participants = Participant.by_user(current_user)
+
+    if request.xhr? != 0
+      render "index"
+    else
+      render json: @event.participants if @event
+    end
   end
 
   def create
@@ -41,5 +48,9 @@ class ParticipantsController < ApplicationController
 
     def participant_params
       params.require(:participant).permit(:nickname, :first_name, :last_name, :email, :phone_number)
+    end
+
+    def set_event
+      @event = Event.by_user(current_user).find(params[:event_id]) if params[:event_id]
     end
 end
