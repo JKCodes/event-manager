@@ -15,9 +15,11 @@
   <br>
 <% end %>
 
-<h1>Participants</h1>
-<ol>
-  <% @event.participants.each do |participant| %>
-    <li><%= link_to participant_to_s(participant), participant_path(participant) %></li>
-  <% end %>  
-</ol>
+<% if @event.participants.any? %>
+  <h1>Participants</h1>
+  <%= link_to "Load Participants", event_participants_path(@event), class: "load_participants" %>
+  <div class="participants"> 
+  </div>
+<% else %>
+  <h1>No participants for this event</h1>
+<% end %>
