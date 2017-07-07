@@ -5,6 +5,8 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
 
     $.get(this.href).success(function(json) {
+      $("a.load_events").hide()
+
       var $events = $("div.events")
       var html = "<ol>"
 
