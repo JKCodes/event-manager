@@ -11,9 +11,11 @@
 <h3>Phone Number: <%= @participant.phone_number %></h3>
 <br>
 
-<h1>Events</h1>
-<ol>
-  <% @participant.events.each do |event| %>
-    <li><%= link_to event_to_s(event), event_path(event) %></li>
-  <% end %>  
-</ol>
+<% if @participant.events.any? %>
+  <h1>Events</h1>
+  <%= link_to "Load Events", participant_events_path(@participant), class: "load_events" %>
+  <div class="events"> 
+  </div>
+<% else %>
+  <h1>No events for this participant</h1>
+<% end %>
