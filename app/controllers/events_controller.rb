@@ -23,7 +23,8 @@ class EventsController < ApplicationController
     if request.xhr? != 0
       render "index"
     else
-      render json: @location.events
+      render json: @location.events if @location
+      render json: @participant.events if @participant
     end
   end
 
