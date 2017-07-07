@@ -8,6 +8,10 @@ $(document).on('turbolinks:load', function() {
   $("a.load_next").on("click", function(e) {
     e.preventDefault();
 
+    $.get(this.href).success(function(json) {
+      $("a.load_events").show()
+      $("#name").html("Name: " + json.name)
+    });
   });  
 
   // Location show events

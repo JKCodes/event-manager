@@ -16,4 +16,9 @@ class ApplicationRecord < ActiveRecord::Base
     new_index = objects.index(object) + 1
     new_index == objects.size ? objects.first : objects[new_index]
   end
+
+  def self.indexes(object)
+    objects = self.by_user(object.user)
+    objects.map { |e| e.id }
+  end
 end

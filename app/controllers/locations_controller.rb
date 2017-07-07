@@ -17,7 +17,7 @@ class LocationsController < ApplicationController
   def show
     set_previous_location(@location)
     set_next_location(@location)
-
+    set_location_indexes(@location)
     if request.xhr? != 0
       render "show"
     else
@@ -45,6 +45,10 @@ class LocationsController < ApplicationController
 
     def set_next_location(location)
       @next = Location.next(location)
+    end
+
+    def set_location_indexes(location)
+      @indexes = Location.indexes(location)
     end
 
     def set_locations
