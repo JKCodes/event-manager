@@ -3,19 +3,25 @@
   <%= link_to "delete", participant_path(@participant), method: :delete, data: { confirm: "Are you sure?"} %>
 </h1>
 
+<div>
+  <%= link_to "Previous Participant", participant_path(@previous), class: "load_previous", data: {indexes: @indexes, current: @participant.id} %> |
+  <%= link_to "Next Participant", participant_path(@next), class: "load_next", data: {indexes: @indexes, current: @participant.id} %>
+</div>
 
-<h3>Nickname: <%= @participant.nickname %></h3>
-<h3>First Name: <%= @participant.first_name %></h3>
-<h3>Last Name: <%= @participant.last_name %></h3>
-<h3>Email: <%= @participant.email %></h3>
-<h3>Phone Number: <%= @participant.phone_number %></h3>
+<h3 class="nickname">Nickname: <%= @participant.nickname %></h3>
+<h3 class="first_name">First Name: <%= @participant.first_name %></h3>
+<h3 class="last_name">Last Name: <%= @participant.last_name %></h3>
+<h3 class="email">Email: <%= @participant.email %></h3>
+<h3 class="phone_number">Phone Number: <%= @participant.phone_number %></h3>
 <br>
 
-<% if @participant.events.any? %>
-  <h1>Events</h1>
-  <%= link_to "Load Events", participant_events_path(@participant), class: "load_events" %>
-  <div class="events"> 
-  </div>
-<% else %>
-  <h1>No events for this participant</h1>
-<% end %>
+<div class="participant_events">
+  <% if @participant.events.any? %>
+    <h1>Events</h1>
+    <%= link_to "Load Events", participant_events_path(@participant), class: "load_events" %>
+    <div class="events"> 
+    </div>
+  <% else %>
+    <h1>No events for this participant</h1>
+  <% end %>
+</div>

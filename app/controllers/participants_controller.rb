@@ -2,7 +2,7 @@ class ParticipantsController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :create_participant, only: [:new]
   before_action :set_participant, only: [:show, :edit, :update, :destroy]
-  before_action :set_event, only: [:index]
+  before_action :set_event, only: [:index, :show]
 
 
   def index
@@ -55,10 +55,10 @@ class ParticipantsController < ApplicationController
     end
 
     def set_next_participant(participant)
-      @next = Participant.next(location)
+      @next = Participant.next(participant)
     end
 
-    def set_location_indexes(participant)
+    def set_participant_indexes(participant)
       @indexes = Participant.indexes(participant)
     end
 
