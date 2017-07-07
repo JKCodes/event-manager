@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
 
   // Location show events
   $("a.load_events").on("click", function(e) {
