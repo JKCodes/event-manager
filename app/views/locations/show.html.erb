@@ -16,7 +16,7 @@
 
   <h1>Events</h1>
 
-  <%= link_to "Load Events", events_path if @location.events %>
+  <%= link_to "Load Events", events_path, class: "load_events" if @location.events %>
 
   <ol>
     <% @location.events.each do |event| %>
