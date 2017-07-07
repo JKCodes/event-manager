@@ -13,16 +13,8 @@
 
 
 <% if @location.events.any? %>
-
   <h1>Events</h1>
-
   <%= link_to "Load Events", events_path, class: "load_events" if @location.events %>
-
-  <ol>
-    <% @location.events.each do |event| %>
-      <li><%= link_to event_to_s(event), event_path(event) %></li>
-    <% end %>  
-  </ol>
 <% else %>
   <h1>No events at this location</h1>
 <% end %>
