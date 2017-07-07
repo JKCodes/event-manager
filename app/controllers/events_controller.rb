@@ -23,8 +23,7 @@ class EventsController < ApplicationController
     if request.xhr? != 0
       render "index"
     else
-      raise "JSON!".inspect
-      render json: @todays_events
+      render json: @location.events
     end
   end
 
