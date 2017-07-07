@@ -2,10 +2,7 @@ class LocationsController < ApplicationController
   before_action :redirect_if_not_signed_in
   before_action :create_location, only: [:new]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @locations = Location.by_user(current_user)
-  end
+  before_action :set_locations, only: [:index]
 
   def create
     @location = current_user.locations.build(location_params)
@@ -15,6 +12,11 @@ class LocationsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    set_previous_location(@location)
+    set_next_location(@location)
   end
 
   def update
@@ -31,6 +33,18 @@ class LocationsController < ApplicationController
   end
 
   private
+    def next_location(location)
+      @previous = Location.previous(location)
+    end
+
+    def previous_location(location)
+      @next = Location.next(location)
+    end
+
+    def set_locations
+      @locations = Location.by_user(current_user)
+    end
+
     def create_location
       @location = current_user.locations.build
     end

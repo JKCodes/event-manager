@@ -4,8 +4,8 @@
 </h1>
 
 <div>
-  <%= link_to "Previous Location", "#", class: "load_previous" %> |
-  <%= link_to "Next Location", "#", class: "load_next" %>
+  <%= link_to "Previous Location", location_path(@previous), class: "load_previous" %> |
+  <%= link_to "Next Location", location_path(@next), class: "load_next" %>
 </div>
 
 <h3>Name: <%= @location.name %></h3>

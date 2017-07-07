@@ -1,5 +1,15 @@
 $(document).on('turbolinks:load', function() {
 
+  $("a.load_previous").on("click", function(e) {
+    e.preventDefault();
+
+  });
+
+  $("a.load_next").on("click", function(e) {
+    e.preventDefault();
+
+  });  
+
   // Location show events
   $("a.load_events").on("click", function(e) {
     e.preventDefault();
