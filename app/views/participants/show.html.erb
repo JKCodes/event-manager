@@ -4,8 +4,8 @@
 </h1>
 
 <div>
-  <%= link_to "Previous Participant", participant_path(@previous), class: "load_previous", data: {indexes: @indexes, current: @participant.id} %> |
-  <%= link_to "Next Participant", participant_path(@next), class: "load_next", data: {indexes: @indexes, current: @participant.id} %>
+  <%= link_to "Previous Participant", participant_path(@previous), class: "load_previous_participant", data: {indexes: @indexes, current: @participant.id} %> |
+  <%= link_to "Next Participant", participant_path(@next), class: "load_next_participant", data: {indexes: @indexes, current: @participant.id} %>
 </div>
 
 <h3 id="nickname">Nickname: <%= @participant.nickname %></h3>
@@ -18,7 +18,7 @@
 <div class="participant_events">
   <% if @participant.events.any? %>
     <h1>Events</h1>
-    <%= link_to "Load Events", participant_events_path(@participant), class: "load_events" %>
+    <%= link_to "Load Events", participant_events_path(@participant), class: "load_participant_events" %>
     <div class="events"> 
     </div>
   <% else %>
