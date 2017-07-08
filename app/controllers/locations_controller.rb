@@ -8,7 +8,10 @@ class LocationsController < ApplicationController
     @location = current_user.locations.build(location_params)
 
     if @location.save
-      redirect_to locations_path, notice: "Location was created successfully"
+      respond_to do |f|
+        f.html { redirect_to locations_path, notice: "Location was created successfully" }
+        f.json { render json: @location}
+      end
     else
       render :new
     end

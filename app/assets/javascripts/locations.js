@@ -1,17 +1,24 @@
 $(document).on('turbolinks:load', function() {
 
-  // $("#new_location").on('submit', function(e) {
-  //   e.preventDefault();
+  $("#new_location").on('submit', function(e) {
+    e.preventDefault();
 
-  //   $.ajax({
-  //     type: "POST",
-  //     url: this.action,
-  //     data: $(this).serialize();,
-  //     success: function(response) {
-  //       console.log(response)
-  //     }
-  //   });
-  // });
+    console.log(this)
+    $.ajax({
+      type: "POST",
+      url: this.action,
+      dataType: "json",
+      data: $(this).serialize(),
+      success: function(response) {
+        $("input[type='submit']").removeAttr("disabled")
+        html = "<tr><td>"
+        html += `<a href="/locations/${response.id}">${response.name}</a></td>`
+        html += "<td></td><td></td><td></td><td></td><td>"
+        html += `<a href="/locations/${response.id}/events">0</a></td></tr>`
+        $('tbody').append(html)
+      }
+    });
+  });
 
   $("a.load_next_location, a.load_previous_location").on("click", function(e) {
     e.preventDefault();
