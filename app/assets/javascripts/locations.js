@@ -1,21 +1,38 @@
+function Location(attributes) {
+  this.name = attributes.name
+  this.id = attributes.id
+}
+
+Location.prototype.renderTr = function() {
+  var html = "<tr><td>"
+  html += `<a href="/locations/${this.id}">${this.name}</a></td>`
+  html += "<td></td><td></td><td></td><td></td><td>"
+  html += `<a href="/locations/${this.id}/events">0</a></td></tr>`
+
+  return html
+}
+
+Location.prototype.resetForm = function() {
+  $("input[type='submit']").removeAttr("disabled")
+  $("#location_name").val("")
+}
+
 $(document).on('turbolinks:load', function() {
 
   $("#new_location").on('submit', function(e) {
     e.preventDefault();
 
-    console.log(this)
     $.ajax({
       type: "POST",
       url: this.action,
       dataType: "json",
       data: $(this).serialize(),
-      success: function(response) {
-        $("input[type='submit']").removeAttr("disabled")
-        html = "<tr><td>"
-        html += `<a href="/locations/${response.id}">${response.name}</a></td>`
-        html += "<td></td><td></td><td></td><td></td><td>"
-        html += `<a href="/locations/${response.id}/events">0</a></td></tr>`
-        $('tbody').append(html)
+      success: function(json) {
+        var location = new Location(json)
+        var locationTr = location.renderTr()
+        location.resetForm()
+
+        $('tbody').append(locationTr)
       }
     });
   });
