@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   before_action :redirect_if_not_signed_in
-  before_action :create_location, only: [:new]
+  before_action :create_location, only: [:index, :new]
   before_action :set_location, only: [:show, :edit, :update, :destroy]
   before_action :set_locations, only: [:index]
 

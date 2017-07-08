@@ -1,5 +1,10 @@
 $(document).on('turbolinks:load', function() {
 
+  $("#new_location").on('submit', function(e) {
+    e.preventDefault();
+    
+  });
+
   $("a.load_next, a.load_previous").on("click", function(e) {
     e.preventDefault();
 

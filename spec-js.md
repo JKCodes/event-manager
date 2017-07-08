@@ -1,8 +1,8 @@
 # Specifications for the Rails with jQuery Assessment
 
 Specs:
-- [x] Use jQuery for implementing new requirements
-- [ ] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
+- [X] Use jQuery for implementing new requirements
+- [X] Include a show resource rendered using jQuery and an Active Model Serialization JSON backend.
   + Plan: Allow users to see previous/next event/participant/location on their respective show page without reloading
 - [X] Include an index resource rendered using jQuery and an Active Model Serialization JSON backend.
   + Fulfilled by the has_many requirement

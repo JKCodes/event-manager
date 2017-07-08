@@ -1,5 +1,20 @@
 <h1>Locations List</h1>
 <p><%= link_to "Add a new location", new_location_path %></p>
+<p>OR quickly create a new location</p>
+
+<div>
+  <%= form_for @location do |f| %>
+    <div>
+      <%= f.label :name, "Location Name"%><br>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>
+<br>
 
 <% if !@locations.empty? %>
   <%= render "locations", locations: @locations %>
