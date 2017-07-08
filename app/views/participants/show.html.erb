@@ -8,11 +8,11 @@
   <%= link_to "Next Participant", participant_path(@next), class: "load_next", data: {indexes: @indexes, current: @participant.id} %>
 </div>
 
-<h3 class="nickname">Nickname: <%= @participant.nickname %></h3>
-<h3 class="first_name">First Name: <%= @participant.first_name %></h3>
-<h3 class="last_name">Last Name: <%= @participant.last_name %></h3>
-<h3 class="email">Email: <%= @participant.email %></h3>
-<h3 class="phone_number">Phone Number: <%= @participant.phone_number %></h3>
+<h3 id="nickname">Nickname: <%= @participant.nickname %></h3>
+<h3 id="first_name">First Name: <%= @participant.first_name %></h3>
+<h3 id="last_name">Last Name: <%= @participant.last_name %></h3>
+<h3 id="email">Email: <%= @participant.email %></h3>
+<h3 id="phone_number">Phone Number: <%= @participant.phone_number %></h3>
 <br>
 
 <div class="participant_events">
