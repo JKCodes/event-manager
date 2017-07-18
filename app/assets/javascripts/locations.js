@@ -86,9 +86,16 @@ Location.clickLoadLocationEventsSuccess = function(json) {
   $events.html(html)
 }
 
-$(document).on('turbolinks:load', function() {
-
+Location.eventListners = function() {
   $("#new_location").on('submit', Location.formSubmit);
   $("a.load_next_location, a.load_previous_location").on("click", Location.clickNavigate);  
   $("a.load_location_events").on("click", Location.clickLoadLocationEvents);  
+}
+
+Location.ready = function() {
+  Location.eventListners()
+}
+
+$(document).on('turbolinks:load', function() {
+  Location.ready()
 });
