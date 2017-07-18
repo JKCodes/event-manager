@@ -84,17 +84,10 @@ Location.clickLoadLocationEvents = function(e) {
 
 Location.clickLoadLocationEventsSuccess = function(json) {
   $("a.load_location_events").hide()
-
-  var $events = $("div.events")
-  var html = "<ol>"
-
-  json.forEach(function(event) {
-    html += `<li><a href="/events/${event.id}">${event.name}</a></li>`
-  })
-
-  html += "</ol>"
-
-  $events.html(html)
+  var events = new EventCollection()
+  json.forEach((event) => events.addEvent(event))
+  var eventsOl = events.renderOl()
+  $("div.events").html(eventsOl)
 }
 
 Location.eventListners = function() {
