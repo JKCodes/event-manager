@@ -50,16 +50,8 @@ Participant.clickLoadParticipantEvents = function(e) {
 
     var events = new EventCollection()
     json.forEach((event) => events.addEvent(event))
-    var $events = $("div.events")
-    var html = "<ol>"
-
-    json.forEach(function(event) {
-      html += `<li><a href="/events/${event.id}">${event.name}</a></li>`
-    })
-
-    html += "</ol>"
-
-    $events.html(html)
+    var eventsOl = events.renderOl()
+    $("div.events").html(eventsOl)
   });
 }
 

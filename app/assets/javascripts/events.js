@@ -6,6 +6,18 @@ EventCollection.prototype.addEvent = function(attributes) {
   this.events.push(new Event(attributes))
 }
 
+EventCollection.prototype.renderOl = function() {
+  var html = "<ol>"
+  
+  this.events.forEach(function(event) {
+    html += `<li><a href="/events/${event.id}">${event.name}</a></li>`
+  })
+
+  html += "</ol>"
+
+  return html
+}
+
 function Event(attributes) {
   this.id = attributes.id === null ? "" : attributes.id
   this.name = attributes.name === null ? "" : attributes.name
