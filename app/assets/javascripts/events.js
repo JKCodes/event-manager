@@ -10,7 +10,7 @@ EventCollection.prototype.renderOl = function() {
   var html = "<ol>"
   
   this.events.forEach(function(event) {
-    html += `<li><a href="/events/${event.id}">${event.name}</a></li>`
+    html += event.renderLi()
   })
 
   html += "</ol>"
@@ -21,6 +21,10 @@ EventCollection.prototype.renderOl = function() {
 function Event(attributes) {
   this.id = attributes.id === null ? "" : attributes.id
   this.name = attributes.name === null ? "" : attributes.name
+}
+
+Event.prototype.renderLi = function() {
+  return `<li><a href="/events/${this.id}">${this.name}</a></li>`
 }
 
 Event.clickLoadEventParticipants = function(e) {
