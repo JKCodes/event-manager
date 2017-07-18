@@ -1,3 +1,8 @@
+function Event(attributes) {
+  this.id = attributes.id === null ? "" : attributes.id
+  this.name = attributes.name === null ? "" : attributes.name
+}
+
 $(document).on('turbolinks:load', function() {
 
   // Event show participants
