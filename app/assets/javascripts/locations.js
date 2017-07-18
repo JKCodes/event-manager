@@ -3,6 +3,14 @@ function Location(attributes) {
   this.id = attributes.id
 }
 
+Location.postSuccess = function(json) {
+  var location = new Location(json)
+  var locationTr = location.renderTr()
+  location.resetForm()
+
+  $('tbody').append(locationTr)
+}
+
 Location.prototype.renderTr = function() {
   var html = "<tr><td>"
   html += `<a href="/locations/${this.id}">${this.name}</a></td>`
@@ -27,13 +35,7 @@ $(document).on('turbolinks:load', function() {
       url: this.action,
       dataType: "json",
       data: $(this).serialize(),
-      success: function(json) {
-        var location = new Location(json)
-        var locationTr = location.renderTr()
-        location.resetForm()
-
-        $('tbody').append(locationTr)
-      }
+      success: Location.postSuccess
     });
   });
 
