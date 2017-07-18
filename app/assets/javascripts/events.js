@@ -22,6 +22,14 @@ Event.clickLoadEventParticipants = function(e) {
   });
 }
 
-$(document).on('turbolinks:load', function() {
+Event.eventListners = function() {
   $("a.load_participants").on("click", Event.clickLoadEventParticipants);  
+}
+
+Event.ready = function() {
+  Event.eventListners()
+}
+
+$(document).on('turbolinks:load', function() {
+  Event.ready()
 });
