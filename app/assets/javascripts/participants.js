@@ -1,3 +1,14 @@
+function Participant(attributes, previous_id, next_id) {
+  this.id = attributes.id === null ? "" : attributes.id
+  this.nickname = attributes.nickname === null ? "" : attributes.nickname
+  this.first_name = attributes.first_name === null ? "" : attributes.first_name
+  this.last_name = attributes.last_name === null ? "" : attributes.last_name
+  this.email = attributes.email === null ? "" : attributes.email
+  this.phone_number = attributes.phone_number === null ? "" : attributes.phone_number
+  this.previous_id = previous_id
+  this.next_id = next_id
+}
+
 $(document).on('turbolinks:load', function() {
 
   $("a.load_next_participant, a.load_previous_participant").on("click", function(e) {
