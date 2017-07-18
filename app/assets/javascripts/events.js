@@ -1,3 +1,11 @@
+function EventCollection() {
+  this.events = []
+}
+
+EventCollection.prototype.addEvent = function(attributes) {
+  this.events.push(new Event(attributes))
+}
+
 function Event(attributes) {
   this.id = attributes.id === null ? "" : attributes.id
   this.name = attributes.name === null ? "" : attributes.name

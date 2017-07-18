@@ -48,6 +48,8 @@ Participant.clickLoadParticipantEvents = function(e) {
   $.get(this.href).success(function(json) {
     $("a.load_participant_events").hide()
 
+    var events = new EventCollection()
+    json.forEach((event) => events.addEvent(event))
     var $events = $("div.events")
     var html = "<ol>"
 
