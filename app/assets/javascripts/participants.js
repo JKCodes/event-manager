@@ -57,10 +57,15 @@ Participant.clickLoadParticipantEvents = function(e) {
   });
 }
 
-$(document).on('turbolinks:load', function() {
-
+Participant.eventListners = function() {
   $("a.load_next_participant, a.load_previous_participant").on("click", Participant.clickNavigate);
-
-  // Participant show events
   $("a.load_participant_events").on("click", Participant.clickLoadParticipantEvents);  
+}
+
+Participant.ready = function() {
+  Participant.eventListners()
+}
+
+$(document).on('turbolinks:load', function() {
+  Participant.ready()
 });
