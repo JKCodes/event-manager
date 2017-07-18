@@ -24,18 +24,22 @@ Participant.clickNavigate = function(e) {
   const next_id = indexes[next_index]
 
   $.get(this.href).success(function(json) {
-    console.log(json)
-    $("div.participant_events").hide()
-    $("a.load_previous_participant")[0].href = "/participants/" + previous_id
-    $("a.load_next_participant")[0].href = "/participants/" + next_id
-    $("a.load_previous_participant").attr("data-current", json.id)
-    $("a.load_next_participant").attr("data-current", json.id)
-    $("#nickname").html("Nickname: " + json.nickname)
-    $("#first_name").html("First Name: " + json.first_name)
-    $("#last_name").html("Last Name: " + json.last_name)
-    $("#email").html("Email: " + json.email)
-    $("#phone_number").html("Phone Number: " + json.phone_number)
+    var participant = new Participant(json, previous_id, next_id)
+    Participant.clickNavigateSuccess(participant)
   });
+}
+
+Participant.clickNavigateSuccess = function(participant) {
+  $("div.participant_events").hide()
+  $("a.load_previous_participant")[0].href = "/participants/" + participant.previous_id
+  $("a.load_next_participant")[0].href = "/participants/" + participant.next_id
+  $("a.load_previous_participant").attr("data-current", participant.id)
+  $("a.load_next_participant").attr("data-current", participant.id)
+  $("#nickname").html("Nickname: " + participant.nickname)
+  $("#first_name").html("First Name: " + participant.first_name)
+  $("#last_name").html("Last Name: " + participant.last_name)
+  $("#email").html("Email: " + participant.email)
+  $("#phone_number").html("Phone Number: " + participant.phone_number)
 }
 
 Participant.clickLoadParticipantEvents = function(e) {
