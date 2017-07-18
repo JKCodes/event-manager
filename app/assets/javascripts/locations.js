@@ -68,20 +68,22 @@ Location.clickNavigate = function(e) {
 Location.clickLoadLocationEvents = function(e) {
   e.preventDefault();
 
-  $.get(this.href).success(function(json) {
-    $("a.load_location_events").hide()
+  $.get(this.href).success(Location.clickLoadLocationEventsSuccess);
+}
 
-    var $events = $("div.events")
-    var html = "<ol>"
+Location.clickLoadLocationEventsSuccess = function(json) {
+  $("a.load_location_events").hide()
 
-    json.forEach(function(event) {
-      html += `<li><a href="/events/${event.id}">${event.name}</a></li>`
-    })
+  var $events = $("div.events")
+  var html = "<ol>"
 
-    html += "</ol>"
+  json.forEach(function(event) {
+    html += `<li><a href="/events/${event.id}">${event.name}</a></li>`
+  })
 
-    $events.html(html)
-  });
+  html += "</ol>"
+
+  $events.html(html)
 }
 
 $(document).on('turbolinks:load', function() {
