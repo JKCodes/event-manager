@@ -3,14 +3,6 @@ function Location(attributes) {
   this.id = attributes.id
 }
 
-Location.postSuccess = function(json) {
-  var location = new Location(json)
-  var locationTr = location.renderTr()
-  location.resetForm()
-
-  $('tbody').append(locationTr)
-}
-
 Location.prototype.renderTr = function() {
   var html = "<tr><td>"
   html += `<a href="/locations/${this.id}">${this.name}</a></td>`
@@ -25,19 +17,29 @@ Location.prototype.resetForm = function() {
   $("#location_name").val("")
 }
 
+Location.postSuccess = function(json) {
+  var location = new Location(json)
+  var locationTr = location.renderTr()
+  location.resetForm()
+
+  $('tbody').append(locationTr)
+}
+
+Location.formSubmit = function(e) {
+  e.preventDefault();
+
+  $.ajax({
+    type: "POST",
+    url: this.action,
+    dataType: "json",
+    data: $(this).serialize(),
+    success: Location.postSuccess
+  });
+}
+
 $(document).on('turbolinks:load', function() {
 
-  $("#new_location").on('submit', function(e) {
-    e.preventDefault();
-
-    $.ajax({
-      type: "POST",
-      url: this.action,
-      dataType: "json",
-      data: $(this).serialize(),
-      success: Location.postSuccess
-    });
-  });
+  $("#new_location").on('submit', Location.formSubmit);
 
   $("a.load_next_location, a.load_previous_location").on("click", function(e) {
     e.preventDefault();
