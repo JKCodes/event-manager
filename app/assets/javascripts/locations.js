@@ -1,6 +1,10 @@
 function Location(attributes) {
-  this.name = attributes.name
-  this.id = attributes.id
+  this.name = attributes.name === null ? "" : attributes.name
+  this.id = attributes.id === null ? "" : attributes.id
+  this.street_address = attributes.street_address === null ? "" : attributes.street_address
+  this.city = attributes.city === null ? "" : attributes.city
+  this.state = attributes.state === null ? "" : attributes.state
+  this.zipcode = attributes.zipcode === null ? "" : attributes.zipcode
 }
 
 Location.prototype.renderTr = function() {
@@ -52,16 +56,17 @@ Location.clickNavigate = function(e) {
   const next_id = indexes[next_index]
 
   $.get(this.href).success(function(json) {
+    var location = new Location(json)
     $("div.location_events").hide()
     $("a.load_previous_location")[0].href = "/locations/" + previous_id
     $("a.load_next_location")[0].href = "/locations/" + next_id
-    $("a.load_previous_location").attr("data-current", json.id)
-    $("a.load_next_location").attr("data-current", json.id)
-    $("#name").html("Name: " + json.name)
-    $("#street_address").html("Street Address: " + json.street_address)
-    $("#city").html("City: " + json.city)
-    $("#state").html("State: " + json.state)
-    $("#zipcode").html("Zipcode: " + json.zipcode)
+    $("a.load_previous_location").attr("data-current", location.id)
+    $("a.load_next_location").attr("data-current", location.id)
+    $("#name").html("Name: " + location.name)
+    $("#street_address").html("Street Address: " + location.street_address)
+    $("#city").html("City: " + location.city)
+    $("#state").html("State: " + location.state)
+    $("#zipcode").html("Zipcode: " + location.zipcode)
   });
 }
 
