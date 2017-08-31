@@ -10,12 +10,20 @@ function Location(attributes, previous_id, next_id) {
 }
 
 Location.prototype.renderTr = function() {
-  var html = "<tr><td>"
-  html += `<a href="/locations/${this.id}">${this.name}</a></td>`
-  html += "<td></td><td></td><td></td><td></td><td>"
-  html += `<a href="/locations/${this.id}/events">0</a></td></tr>`
-
-  return html
+  return (`
+    <tr>
+      <td>
+        <a href="/locations/${this.id}">${this.name}</a>
+      </td>
+      <td>${this.street_address}</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>
+        <a href="/locations/${this.id}/events">0</a>
+      </td>
+    </tr>
+  `);
 }
 
 Location.prototype.resetForm = function() {
