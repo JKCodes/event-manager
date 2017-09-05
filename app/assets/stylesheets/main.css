@@ -1,0 +1,73 @@
+html {
+  font-family: "Arial", serif;
+}
+
+.main {
+  width: 90%;
+  margin: 50px auto;
+}
+
+/* navigation */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  height: 30px;
+  -webkit-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.33);
+  box-shadow: 1px 1px 6px 0px rgba(0,0,0,0.33);
+}
+
+nav ul li {
+  display: inline-block;
+}
+
+nav a {
+  text-decoration: none;
+  color: #444;
+}
+
+.nav_events {
+  position: fixed;
+  top: 7px;
+  left: 50px;
+}
+
+.nav_participants {
+  position: fixed;
+  top: 7px;
+  left: 125px;
+}
+
+.nav_locations {
+  position: fixed;
+  top: 7px;
+  left: 240px;
+}
+
+.nav_signout {
+  position: fixed;
+  top: 7px;
+  right: 50px;
+}
+
+.nav_home {
+  position: fixed;
+  top: 7px;
+  left: 50px;
+}
+
+.nav_signup {
+  position: fixed;
+  top: 7px;
+  right: 125px;
+}
+
+.nav_signin {
+  position: fixed;
+  top: 7px;
+  right: 50px;
+}

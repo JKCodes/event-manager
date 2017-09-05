@@ -1,14 +1,14 @@
 <nav>
   <ul>
     <% if signed_in? %>
-      <li><%= link_to "Events", events_path %></li>
-      <li><%= link_to "Participants", participants_path %></li>
-      <li><%= link_to "Locations", locations_path %></li>
-      <li><%= link_to "Sign Out", signout_path, method: :delete %></li>
+      <li class="nav_events"><%= link_to "Events", events_path %></li>
+      <li class="nav_participants"><%= link_to "Participants", participants_path %></li>
+      <li class="nav_locations"><%= link_to "Locations", locations_path %></li>
+      <li class="nav_signout"><%= link_to "Sign Out", signout_path, method: :delete %></li>
     <% else %>
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Sign Up", signup_path %></li>
-      <li><%= link_to "Sign In", signin_path %></li>
+      <li class="nav_home"><%= link_to "Home", root_path %></li>
+      <li class="nav_signup"><%= link_to "Sign Up", signup_path %></li>
+      <li class="nav_signin"><%= link_to "Sign In", signin_path %></li>
     <% end %>
   </ul>
 </nav>

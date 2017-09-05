@@ -12,9 +12,10 @@
 
     <%= render "layouts/navigation" %>
     <%= render "layouts/errors" %>
-
-    <%= yield %>
-
-    <%= render "layouts/back" %>
+    
+    <div class="main">
+      <%= yield %>
+      <%= render "layouts/back" %>
+    </div>
   </body>
 </html>
