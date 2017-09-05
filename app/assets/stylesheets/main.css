@@ -71,3 +71,12 @@ nav a {
   top: 7px;
   right: 50px;
 }
+
+/* back */
+
+.go_back {
+  display: block;
+  text-decoration: none;
+  width: 70px;
+  margin: 0 auto;
+}
