@@ -1,0 +1,25 @@
+.sessions_fieldset {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.form_head {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.sessions_fieldset input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 13px;
+  border-color: #fff;
+}
+
+.sessions_fieldset input[type="submit"] {
+  background-color: #20e6c5;
+  padding: 5px;
+  color: white;
+}
