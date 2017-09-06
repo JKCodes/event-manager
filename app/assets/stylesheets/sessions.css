@@ -19,7 +19,23 @@
 }
 
 .sessions_fieldset input[type="submit"] {
-  background-color: #20e6c5;
+  background-color: #148572;
+  border-color: #148572;
   padding: 5px;
   color: white;
+}
+
+.facebook_signin {
+  box-sizing: border-box;
+  display: block;
+  text-decoration: none;
+  margin: 0 auto;
+  border: 1px solid #3812b5;
+  border-radius: 5px;
+  background-color: #3812b5;
+  color: white;
+  width: 36%;
+  text-align: center;
+  margin-top: 30px;
+  padding: 30px 0;
 }
