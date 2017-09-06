@@ -1,0 +1,13 @@
+#error_explanation {
+  color: red;
+  text-align: center;
+}
+
+#error_explanation ul li {
+  list-style-type: none;
+}
+
+.field_with_errors label:after {
+  content: " *Please fix this error";
+  color: red;
+}
