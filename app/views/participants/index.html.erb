@@ -1,6 +1,8 @@
-<h1>Participants List</h1>
-<p><%= link_to "Add a new participant", new_participant_path %></p>
+<div class="participants_index">
+  <h1>Participants</h1>
+  <p><%= link_to "+ New Participant", new_participant_path, class: "add_participant shadow" %></p>
 
-<% if !@participants.empty? %>
-  <%= render "participants", participants: @participants %>
-<% end %>  
+  <% if !@participants.empty? %>
+    <%= render "participants", participants: @participants %>
+  <% end %>  
+</div>
