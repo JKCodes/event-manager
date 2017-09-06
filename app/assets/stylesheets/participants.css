@@ -34,3 +34,31 @@
 .participant_table a:hover {
   color: #ccc;
 }
+
+/* participant form */
+
+.new_participant h1, .edit_participant h1 {
+  text-align: center;
+}
+
+.participant_fieldset {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.participant_fieldset input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 13px;
+  border-color: #fff;
+}
+
+.participant_fieldset input[type="submit"] {
+  background-color: #148572;
+  border-color: #148572;
+  padding: 5px;
+  color: white;
+}
