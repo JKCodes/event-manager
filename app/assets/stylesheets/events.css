@@ -35,3 +35,42 @@
 .event_table a:hover {
   color: #ccc;
 }
+
+/* event form */
+
+.new_event h1, .edit_event h1 {
+  text-align: center;
+}
+
+.event_fieldset {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.event_fieldset input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 13px;
+  border-color: #fff;
+}
+
+.event_fieldset input[type="checkbox"] {
+  display: inline-block;
+  width: 5%;
+}
+
+.event_fieldset input[type="checkbox"] + label {
+  display: inline-block;
+  margin-left: 0;
+  width: 43%;
+}
+
+.event_fieldset input[type="submit"] {
+  background-color: #148572;
+  border-color: #148572;
+  padding: 5px;
+  color: white;
+}

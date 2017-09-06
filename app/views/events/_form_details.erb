@@ -1,19 +1,19 @@
-<fieldset>
+<fieldset class="event_fieldset">
     <%= f.hidden_field :location_id if @location %>
     <h3>Event Details</h3>
     <div>
       <%= f.label :name, "Name"%><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: "shadow" %>
     </div>
     <br>
     <div>
       <%= f.label :start_time, "Start Time"%><br>
-      <%= f.datetime_field :start_time, ampm: true %>
+      <%= f.datetime_field :start_time, ampm: true, class: "shadow" %>
     </div>
     <br>
     <div>
       <%= f.label :end_time, "End Time"%><br>
-      <%= f.datetime_field :end_time, ampm: true %>
+      <%= f.datetime_field :end_time, ampm: true, class: "shadow" %>
     </div>
     <br>
     
@@ -29,7 +29,7 @@
 
       <%= f.fields_for :location, event.build_location do |location| %>
         <%= location.label :name, "Create a new location by entering a new name: " %>
-        <%= location.text_field :name %>
+        <%= location.text_field :name, class: "shadow" %>
       <% end %>
     <% else %>
       <h3><%= "Location: #{@location.name}" %></h3>
@@ -41,7 +41,7 @@
     <p>You may also choose to add participants later</p>
     <% if current_user.participants.any? %>
       <div>
-        <%= f.label :location, "Choose (an) existing participant(s): " %>
+        <%= f.label :location, "Choose (an) existing participant(s): " %><br>
         <%= f.collection_check_boxes :participant_ids, current_user.participants, :id, :nickname %>
         <p>OR</p>
       </div>
@@ -52,8 +52,7 @@
     <% 25.times do %>
       <%= f.fields_for :participants, event.participants.build do |participant| %>
         <li>
-        <%= participant.label :nickname, "Nickname: " %>
-        <%= participant.text_field :nickname %></li>
+        <%= participant.text_field :nickname, placeholder: "Nickname", class: "shadow" %></li>
       <% end %>
     <% end %>
     </ol>
