@@ -31,6 +31,7 @@ Participant.clickNavigate = function(e) {
 
 Participant.clickNavigateSuccess = function(participant) {
   $("div.participant_events").hide()
+  $("#main_head").html("Participant Details - Viewing Mode")
   $("a.load_previous_participant")[0].href = "/participants/" + participant.previous_id
   $("a.load_next_participant")[0].href = "/participants/" + participant.next_id
   $("a.load_previous_participant").attr("data-current", participant.id)

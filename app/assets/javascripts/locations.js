@@ -73,6 +73,7 @@ Location.clickNavigate = function(e) {
 
 Location.clickNavigateSuccess = function(location) {
   $("div.location_events").hide()
+  $("#main_head").html("Location Details - Viewing Mode")
   $("a.load_previous_location")[0].href = "/locations/" + location.previous_id
   $("a.load_next_location")[0].href = "/locations/" + location.next_id
   $("a.load_previous_location").attr("data-current", location.id)
