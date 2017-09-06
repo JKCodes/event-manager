@@ -1,26 +1,24 @@
-<h1>Locations List</h1>
-<p><%= link_to "Add a new location", new_location_path %></p>
-<p>OR quickly create a new location</p>
+<div class="locations_index">
+  <h1>Locations</h1>
+  <p><%= link_to "+ New Location", new_location_path, class: "add_location shadow" %></p>
 
-<div>
-  <%= form_for @location do |f| %>
-    <div>
-      <%= f.label :name, "Location Name"%><br>
-      <%= f.text_field :name %>
+  <div class="quick_location shadow">
+    <p>OR quickly create a new location</p>
 
-      <br>
+    <%= form_for @location do |f| %>
+      <div>
+        <%= f.label :name, "Location Name"%><br>
+        <%= f.text_field :name %>     
+      </div>
 
-      <%= f.label :street_address, "Address"%><br>
-      <%= f.text_field :street_address %>      
-    </div>
+      <div>
+        <%= f.submit %>
+      </div>
+    <% end %>
+  </div>
+  <br>
 
-    <div>
-      <%= f.submit %>
-    </div>
-  <% end %>
+  <% if !@locations.empty? %>
+    <%= render "locations", locations: @locations %>
+  <% end %>  
 </div>
-<br>
-
-<% if !@locations.empty? %>
-  <%= render "locations", locations: @locations %>
-<% end %>  

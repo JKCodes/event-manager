@@ -1,0 +1,56 @@
+.locations_index {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+
+.locations_index .add_location {
+  text-decoration: none;
+  border: 1px solid #0d8b8f;
+  border-radius: 5px;
+  background-color: #0d8b8f;
+  padding: 5px;
+  color: white;
+}
+
+.locations_index p {
+  margin-bottom: 30px;
+}
+
+.quick_location {
+  width: 40%;
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.quick_location input[type="submit"] {
+  margin-top: 25px;
+  border: 1px solid #159215;
+  border-radius: 5px;
+  background-color: #159215;
+  padding: 5px;
+  color: white;
+}
+
+.location_table {
+  table-layout: fixed;
+  width: 100%;
+  margin: 40px auto;
+}
+
+.location_table td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 16%;
+}
+
+.location_table a {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.location_table a:hover {
+  color: #ccc;
+}

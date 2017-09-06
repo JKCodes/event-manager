@@ -1,0 +1,36 @@
+.events_index {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+
+.events_index .add_event {
+  text-decoration: none;
+  border: 1px solid #0d8b8f;
+  border-radius: 5px;
+  background-color: #0d8b8f;
+  padding: 5px;
+  color: white;
+}
+
+.event_table {
+  table-layout: fixed;
+  width: 100%;
+  margin: 40px auto;
+}
+
+.event_table td {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 16%;
+}
+
+.event_table a {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.event_table a:hover {
+  color: #ccc;
+}
