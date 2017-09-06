@@ -3,17 +3,16 @@
   <%= link_to "delete", location_path(@location), method: :delete, data: { confirm: "Are you sure?  WARNING: This will also destroy all events that are associated with this location."} %>
 </h1>
 
-<div>
-  <%= link_to "Previous Location", location_path(@previous), class: "load_previous_location", data: {indexes: @indexes, current: @location.id} %> |
-  <%= link_to "Next Location", location_path(@next), class: "load_next_location", data: {indexes: @indexes, current: @location.id} %>
-</div>
+<div class="location_details shadow">
+  <%= link_to "<", location_path(@previous), class: "load_previous_location", data: {indexes: @indexes, current: @location.id} %>
+  <%= link_to ">", location_path(@next), class: "load_next_location", data: {indexes: @indexes, current: @location.id} %>
 
-<h3 id="name">Name: <%= @location.name %></h3>
-<h3 id="street_address">Street Address: <%= @location.street_address %></h3>
-<h3 id="city">City: <%= @location.city %></h3>
-<h3 id="state">State: <%= @location.state %></h3>
-<h3 id="zipcode">Zipcode: <%= @location.zipcode %></h3>
-<br>
+  <h3 id="name">Name: <%= @location.name %></h3>
+  <h3 id="street_address">Street Address: <%= @location.street_address %></h3>
+  <h3 id="city">City: <%= @location.city %></h3>
+  <h3 id="state">State: <%= @location.state %></h3>
+  <h3 id="zipcode">Zipcode: <%= @location.zipcode %></h3>
+</div>
 
 <div class="location_events">
   <% if @location.events.any? %>

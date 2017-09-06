@@ -82,3 +82,71 @@
   padding: 5px;
   color: white;
 }
+
+/* location show */
+
+#main_head {
+  text-align: center;
+}
+
+#main_head a {
+  text-decoration: none;
+  color: #333;
+}
+
+#main_head a:hover {
+  text-decoration: none;
+  color: #ccc;
+}
+
+.location_details {
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  position: relative;
+}
+
+.load_previous_location {
+  position: absolute;
+  font-size: 3em;
+  left: 25px;
+  top: 75px;
+  text-decoration: none;
+  color: #999;
+}
+
+.load_next_location {
+  position: absolute;
+  font-size: 3em;
+  right: 25px;
+  top: 75px;
+  text-decoration: none;
+  color: #999;
+}
+
+.location_events {
+  text-align: center;
+}
+
+.load_location_events {
+  text-decoration: none;
+  border: 1px solid #0d8b8f;
+  border-radius: 5px;
+  background-color: #0d8b8f;
+  padding: 5px;
+  color: white;
+}
+
+.location_events .events ol {
+  list-style-position: inside;
+}
+
+.location_events .events a {
+  text-decoration: none;
+  color: #444;
+}
+
+.location_events .events a:hover {
+  color: #ddd;
+}
