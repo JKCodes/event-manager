@@ -62,3 +62,61 @@
   padding: 5px;
   color: white;
 }
+
+/* participant show */
+
+#main_head {
+  text-align: center;
+}
+
+.participant_details {
+  border: 1px solid #ccc;
+  margin: 0 auto;
+  width: 70%;
+  text-align: center;
+  position: relative;
+}
+
+.load_previous_participant {
+  position: absolute;
+  font-size: 3em;
+  left: 25px;
+  top: 75px;
+  text-decoration: none;
+  color: #999;
+}
+
+.load_next_participant {
+  position: absolute;
+  font-size: 3em;
+  right: 25px;
+  top: 75px;
+  text-decoration: none;
+  color: #999;
+}
+
+.participant_events {
+  text-align: center;
+}
+
+.load_participant_events {
+  text-decoration: none;
+  border: 1px solid #0d8b8f;
+  border-radius: 5px;
+  background-color: #0d8b8f;
+  padding: 5px;
+  color: white;
+}
+
+.participant_events .events ol {
+  list-style-position: inside;
+}
+
+.participant_events .events a {
+  text-decoration: none;
+  color: #444;
+}
+
+.participant_events .events a:hover {
+  color: #ddd;
+}

@@ -3,17 +3,16 @@
   <%= link_to "delete", participant_path(@participant), method: :delete, data: { confirm: "Are you sure?"} %>
 </h1>
 
-<div>
-  <%= link_to "Previous Participant", participant_path(@previous), class: "load_previous_participant", data: {indexes: @indexes, current: @participant.id} %> |
-  <%= link_to "Next Participant", participant_path(@next), class: "load_next_participant", data: {indexes: @indexes, current: @participant.id} %>
-</div>
+<div class="participant_details shadow">
+  <%= link_to "<", participant_path(@previous), class: "load_previous_participant", data: {indexes: @indexes, current: @participant.id} %>
+  <%= link_to ">", participant_path(@next), class: "load_next_participant", data: {indexes: @indexes, current: @participant.id} %>
 
-<h3 id="nickname">Nickname: <%= @participant.nickname %></h3>
-<h3 id="first_name">First Name: <%= @participant.first_name %></h3>
-<h3 id="last_name">Last Name: <%= @participant.last_name %></h3>
-<h3 id="email">Email: <%= @participant.email %></h3>
-<h3 id="phone_number">Phone Number: <%= @participant.phone_number %></h3>
-<br>
+  <h3 id="nickname">Nickname: <%= @participant.nickname %></h3>
+  <h3 id="first_name">First Name: <%= @participant.first_name %></h3>
+  <h3 id="last_name">Last Name: <%= @participant.last_name %></h3>
+  <h3 id="email">Email: <%= @participant.email %></h3>
+  <h3 id="phone_number">Phone Number: <%= @participant.phone_number %></h3>
+</div>
 
 <div class="participant_events">
   <% if @participant.events.any? %>
