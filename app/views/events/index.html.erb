@@ -1,31 +1,34 @@
-<% if @location %>
-  <h1>Events list for <%= @location.name %></h1>
-<% elsif @participant %>
-  <h1>Events list for <%= participant_to_s(@participant) %></h1>
-<% else %>
-  <h1>Events list</h1>
-<% end %>
+<div class="events_index">
 
-<% if !@location %>
-  <p><%= link_to "Add a new event", new_event_path %></p>
-<% else %>
-  <p><%= link_to "Create a new event for #{@location.name}", new_location_event_path %>
-<% end %>
+  <% if @location %>
+    <h1>Events at <%= @location.name %></h1>
+  <% elsif @participant %>
+    <h1>Events for <%= participant_to_s(@participant) %></h1>
+  <% else %>
+    <h1>Events</h1>
+  <% end %>
 
-<% if !@todays_events.empty? %>
-  <h2>Today's Events</h2>
+  <% if !@location %>
+    <p><%= link_to "+ Add a New Event", new_event_path, class: "add_event" %></p>
+  <% else %>
+    <p><%= link_to "+ Add a New Event for #{@location.name}", new_location_event_path, class: "add_event" %></p>
+  <% end %>
 
-  <%= render "events", { events: @todays_events, location: @location } %>
-<% end %>  
+  <% if !@todays_events.empty? %>
+    <h2>Today's Events</h2>
 
-<% if !@upcoming_events.empty? %>
-  <h2>Upcoming Events</h2>
+    <%= render "events", { events: @todays_events, location: @location } %>
+  <% end %>  
 
-  <%= render "events", { events: @upcoming_events, location: @location } %>
-<% end %>
+  <% if !@upcoming_events.empty? %>
+    <h2>Upcoming Events</h2>
 
-<% if !@old_events.empty? %>
-  <h2>Past Events</h2>
+    <%= render "events", { events: @upcoming_events, location: @location } %>
+  <% end %>
 
-  <%= render "events", { events: @old_events, location: @location } %>
-<% end %>
+  <% if !@old_events.empty? %>
+    <h2>Past Events</h2>
+
+    <%= render "events", { events: @old_events, location: @location } %>
+  <% end %>
+</div>
