@@ -1,25 +1,28 @@
-<h1><%= "#{@location.name}'s" if @location %> Event Details -
+<h1 id="main_head"><%= "#{@location.name}'s" if @location %> Event Details -
   <%= link_to "edit", @location ? edit_location_event_path(@location) : edit_event_path(@event) %> |
   <%= link_to "delete", event_path(@event), method: :delete, data: { confirm: "Are you sure?"} %>
 </h1>
 
-
-<h3>Name: <%= @event.name %></h3>
-<h3>Start Time: <%= formatted_time(@event.start_time) %></h3>
-<h3>End Time: <%= formatted_time(@event.end_time) %></h3>
-<br>
+<div class="event_details">
+  <h3>Name: <%= @event.name %></h3>
+  <h3>Start Time: <%= formatted_time(@event.start_time) %></h3>
+  <h3>End Time: <%= formatted_time(@event.end_time) %></h3>
+</div>
 
 <% if !@location %>
-  <h1>Location</h1>
-  <h3>Name: <%= link_to @event.location.name, location_path(@event.location) %></h3>
-  <br>
+  <div class="event_location">
+    <h1>Location</h1>
+    <h3>Name: <%= link_to @event.location.name, location_path(@event.location) %></h3>
+  </div>
 <% end %>
 
 <% if @event.participants.any? %>
-  <h1>Participants</h1>
-  <%= link_to "Load Participants", event_participants_path(@event), class: "load_participants" %>
-  <div class="participants"> 
+  <div class="event_participants">
+    <h1>Participants</h1>
+    <%= link_to "Load Participants", event_participants_path(@event), class: "load_participants" %>
+    <div class="participants"> 
+    </div>
+  <% else %>
+    <h1>No participants for this event</h1>
   </div>
-<% else %>
-  <h1>No participants for this event</h1>
 <% end %>
