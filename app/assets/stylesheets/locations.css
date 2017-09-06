@@ -54,3 +54,31 @@
 .location_table a:hover {
   color: #ccc;
 }
+
+/* location form */
+
+.new_location h1, .edit_location h1 {
+  text-align: center;
+}
+
+.location_fieldset {
+  width: 40%;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.location_fieldset input {
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 2px;
+  margin-bottom: 13px;
+  border-color: #fff;
+}
+
+.location_fieldset input[type="submit"] {
+  background-color: #148572;
+  border-color: #148572;
+  padding: 5px;
+  color: white;
+}

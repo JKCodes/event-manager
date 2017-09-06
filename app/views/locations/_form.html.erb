@@ -1,35 +1,35 @@
 <%= render "layouts/form_errors", object: location %>
 
 <%= form_for location do |f| %>
-  <fieldset>
+  <fieldset class="participant_fieldset">
     <h3>Location Details</h3>
     <div>
       <%= f.label :name, "Name"%><br>
-      <%= f.text_field :name %>
+      <%= f.text_field :name, class: "shadow" %>
     </div>
     <br>
 
     <div>
       <%= f.label :street_address, "Street Address"%><br>
-      <%= f.text_field :street_address %>
+      <%= f.text_field :street_address, class: "shadow" %>
     </div>
     <br>
   
     <div>
       <%= f.label :city, "City"%><br>
-      <%= f.text_field :city %>
+      <%= f.text_field :city, class: "shadow" %>
     </div>
     <br>
 
     <div>
       <%= f.label :state, "State"%><br>
-      <%= f.text_field :state %>
+      <%= f.text_field :state, class: "shadow" %>
     </div>
     <br>
 
     <div>
       <%= f.label :zipcode, "Zipcode"%><br>
-      <%= f.text_field :zipcode %>
+      <%= f.text_field :zipcode, class: "shadow" %>
     </div>
     <br>
 
